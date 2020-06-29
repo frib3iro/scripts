@@ -20,10 +20,10 @@ header="#!/usr/bin/env bash
 "
 
 # Testar se foi passado apenas um argumento...
-[[ $# -ne 1 ]] && echo "Precisa de um argumento!" && exit 1
+[[ $# -ne 1 ]] && echo "Precisa um argumento!" && exit 1
 
 # Testar se arquivo ja existe...
-[[ -f $1 ]] && echo "Arquivo existe!" && exit 1
+[[ -f $1 ]] && echo "Arquivo já existe!" && exit 1
 
 echo "$header" > $1
 chmod +x $1
