@@ -1,0 +1,23 @@
+#!/usr/bin/bash
+
+clear
+
+# variaveis
+B="\033[0;34m"
+G="\033[0;32m"
+Y="\033[0;33m"
+S="\033[0;34m>>\e[m"
+F="\e[m"
+
+# echo {a..z}; echo -n {n..z}; echo -n ' '; echo {a..m}
+
+# echo
+
+echo -en "${S} ${B}Digite o texto a ser criptografado: ${F}"
+read texto
+
+echo
+
+# echo -e "${G}$texto${F}" | tr A-Za-z N-ZA-Mn-za-m
+
+echo $texto | tr A-Za-z N-ZA-Mn-za-m
