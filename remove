@@ -1,0 +1,55 @@
+#!/usr/bin/env bash
+#----------------------------------------------------------------------
+# Script    : [remove.sh]
+# Descrição :
+# Versão    : 1.0
+# Autor     : Fabio Junior Ribeiro
+# Email     : rib3iro@live.com
+# Github    : https://github.com/frib3iro
+# Data      : 08/04/2022
+# Licença   : GNU/GPL v3.0
+#----------------------------------------------------------------------
+# Uso       :
+#----------------------------------------------------------------------
+
+echo "Removendo o ecesso de espaços com tr"
+sleep 2s
+tr -s ' ' ' ' < $1 > temp
+
+echo "Removendo o ecesso de espaços com sed"
+sleep 2s
+sed -i 's/- /-/' temp
+sed -i 's/ -/-/' temp
+sed -i 's/[ \t]\+$//' temp
+
+echo "Removendo o arquivo $1"
+sleep 2s
+rm $1
+
+echo "Trocando espaços por quebra de linha com tr"
+sleep 2s
+tr ' ' '\n' < temp > $1
+
+echo "Removendo o arquivo temp"
+sleep 2s
+rm temp
+
+echo "Organizando e removendo duplicados com sort"
+sleep 2s
+sort -u $1 > temp
+
+echo "Removendo o arquivo $1"
+sleep 2s
+rm $1
+
+echo "Trocando quebra de linha por espaço com tr "
+sleep 2s
+tr '\n' ' ' < temp > $1
+
+echo "Removendo o arquivo temp"
+sleep 2s
+rm temp
+
+echo "Procedimento finalizado!"
+sleep 2s
+cat $1
