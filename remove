@@ -11,45 +11,35 @@
 #----------------------------------------------------------------------
 # Uso       :
 #----------------------------------------------------------------------
+clear
+
+# Testar se foi passado apenas um argumento...
+[[ $# -ne 1 ]] && echo "Precisa do nome do arquivo!" && exit 1
 
 echo "Removendo o ecesso de espaços com tr"
 sleep 2s
 tr -s ' ' ' ' < $1 > temp
 
-echo "Removendo o ecesso de espaços com sed"
-sleep 2s
-sed -i 's/- /-/' temp
-sed -i 's/ -/-/' temp
-sed -i 's/[ \t]\+$//' temp
-
-echo "Removendo o arquivo $1"
-sleep 2s
-rm $1
-
+echo
 echo "Trocando espaços por quebra de linha com tr"
 sleep 2s
 tr ' ' '\n' < temp > $1
 
-echo "Removendo o arquivo temp"
-sleep 2s
-rm temp
-
+echo
 echo "Organizando e removendo duplicados com sort"
 sleep 2s
 sort -u $1 > temp
 
-echo "Removendo o arquivo $1"
-sleep 2s
-rm $1
-
+echo
 echo "Trocando quebra de linha por espaço com tr "
 sleep 2s
 tr '\n' ' ' < temp > $1
 
-echo "Removendo o arquivo temp"
-sleep 2s
-rm temp
-
+echo
 echo "Procedimento finalizado!"
 sleep 2s
+rm temp
+echo
 cat $1
+echo
+echo
