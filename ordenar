@@ -2,11 +2,13 @@
 
 clear
 
-echo -e "Iniciando ordenação"
-echo -en "\nInforme o caminho do seu texto: "
-read caminho
+# Testar se foi passado apenas um argumento...
+[[ $# -ne 1 ]] && echo "Precisa de um argumento!" && exit 1
 
-tr -s '[:space:]' ' ' < $caminho > arquivo1.txt
+echo -e "Iniciando ordenação"
+echo
+
+tr -s '[:space:]' ' ' < $1 > arquivo1.txt
 tr -s '[:space:]' '\n' < arquivo1.txt > arquivo2.txt
 
 sort arquivo2.txt > arquivo3.txt
@@ -16,5 +18,5 @@ cat  "arquivo3.txt" | xargs > pronto.txt
 rm arquivo1.txt arquivo2.txt arquivo3.txt
 
 echo "Ordenação finalizada."
-sleep 2s
+echo
 
