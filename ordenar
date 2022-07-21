@@ -11,7 +11,7 @@ echo
 tr -s '[:space:]' ' ' < $1 > arquivo1.txt
 tr -s '[:space:]' '\n' < arquivo1.txt > arquivo2.txt
 
-sort arquivo2.txt > arquivo3.txt
+sort -u arquivo2.txt > arquivo3.txt
 
 cat  "arquivo3.txt" | xargs > pronto.txt
 
